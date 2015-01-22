@@ -1,0 +1,44 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Booklist</title>
+  <meta name="description" content="Booklist">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.10/angular.min.js"></script>
+</head>
+
+<body ng-app="BooklistApp">
+
+  <script type="text/javascript">
+    Parse.initialize("TSAfvRs7nzGPlKyqjVSeYJoNcdi3bv3SIyvzG6UP", "JA3wwzg1FP3lB7XfiMdNWrixEtNr2l9xtbADdggx");
+
+    var query = new Parse.Query("Books");
+    query.find({
+        success: function(results) {
+          console.log(results);
+        // results is an array of Parse.Object.
+      },
+
+      error: function(error) {
+        // error is an instance of Parse.Error.
+        }
+    });
+    
+
+    // var TestObject = Parse.Object.extend("TestObject");
+    // var testObject = new TestObject();
+    // testObject.save({foo: "bar"}).then(function(object) {
+    //   alert("yay! it worked");
+    // });
+  </script>
+</body>
+
+</html>
