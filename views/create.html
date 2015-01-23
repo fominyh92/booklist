@@ -4,27 +4,27 @@
       <table class="table">
         <tr>
           <td>Name</td>
-          <td>
+          <td ng-class="{error: createBook.name.$invalid}">
             <input class="form-control" type="text" name="name" ng-model="book.name" required>
-            <span ng-show="myForm.name.$error.required" class="help-inline">not correct</span>
+            <span ng-show="createBook.name.$error.required" class="help-inline">input name</span>
           </td>
         </tr>
         <tr>
           <td>Author</td>
           <td>
             <input class="form-control" type="text" name="author" ng-model="book.author" required>
-            <span ng-show="myForm.author.$error.required" class="help-inline">not correct</span>
+            <span ng-show="createBook.author.$error.required" class="help-inline">input book author</span>
           </td>
         </tr>
         <tr>
           <td>Year of publishing</td>
           <td>
-            <input class="form-control" type="text" name="publish_year" ng-model="book.publish_year" required>
-            <span ng-show="myForm.publish_year.$error.required" class="help-inline">not correct</span>
+            <input class="form-control" type="number" name="publish_year" ng-model="book.publish_year" required>
+            <span ng-show="createBook.publish_year.$error.number || createBook.publish_year.$error.required" class="help-inline">input year of publishing</span>
           </td>
         </tr>
       </table>
-      <button class="btn btn-lg btn-primary" ng-click="create()" ng-disabled="isClean() || myForm.$invalid">Create</button>
+      <button class="btn btn-lg btn-primary" ng-click="create()" ng-disabled="createBook.$invalid">Create</button>
     </form>
     
   </p>

@@ -30,23 +30,34 @@ BooklistApp.controller("BookListCtrl", ['$scope', 'Books', function($scope, Book
   });
 }]);
 
-BooklistApp.controller("BookCtrl", ['$scope', '$routeParams', 'Books', function($scope, $routeParams, Books){
+BooklistApp.controller("BookCtrl", ['$scope', '$routeParams', '$window', 'Books', function($scope, $routeParams, $window, Books){
   Books.get( $routeParams.bookId ).success(function(data) {
     $scope.book = data;
     console.log(data);
   });
+
+  $scope.save = function(){
+    Books.edit( $routeParams.bookId, $scope.book ).success(function(data) {
+      $scope.book = data;
+      console.log('book saveed 1');
+      $window.location.href = '#/books';
+    });
+  }
+
+  $scope.delete = function(){
+    Books.delete( $routeParams.bookId ).success(function(data) {
+      $scope.book = data;
+      console.log('book deleteed');
+      $window.location.href = '#/books';
+    });
+  }
 }]);
 
 BooklistApp.controller("BookCreateCtrl", ['$scope', '$window', 'Books', function($scope, $window, Books){
-  var self = this;
   $scope.create = function() {
       Books.create({ name : $scope.book.name, author : $scope.book.author, publish_year : parseInt($scope.book.publish_year, 10) }).success(function(data) {
-          // $state.go('todos');
           $window.location.href = '#/books';
       });
-  }
-  $scope.isClean = function() {
-    return angular.equals(self.original, $scope.book);
   }
 }]);
 
