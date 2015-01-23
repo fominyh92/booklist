@@ -40,7 +40,7 @@ BooklistApp.controller("BookCtrl", ['$scope', '$routeParams', 'Books', function(
 BooklistApp.controller("BookCreateCtrl", ['$scope', '$window', 'Books', function($scope, $window, Books){
   var self = this;
   $scope.create = function() {
-      Books.create({ name : $scope.book.name, author : $scope.book.author, publish_year : $scope.book.publish_year }).success(function(data) {
+      Books.create({ name : $scope.book.name, author : $scope.book.author, publish_year : parseInt($scope.book.publish_year, 10) }).success(function(data) {
           // $state.go('todos');
           $window.location.href = '#/books';
       });
