@@ -1,0 +1,28 @@
+<h1>Edit book - "{{book.name}}"</h1>
+<form name="createBook">
+  <table class="table">
+    <tr>
+      <td>Name</td>
+      <td>
+        <input class="form-control" type="text" name="name" ng-model="book.name" required>
+        <span ng-show="createBook.name.$error.required" class="help-inline">input name</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Author</td>
+      <td>
+        <input class="form-control" type="text" name="author" ng-model="book.author" required>
+        <span ng-show="createBook.author.$error.required" class="help-inline">input book author</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Year of publishing</td>
+      <td>
+        <input class="form-control" type="number" name="publish_year" ng-model="book.publish_year" required>
+        <span ng-show="createBook.publish_year.$error.number" class="help-inline">input year of publishing</span>
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-lg btn-primary" ng-click="save()" ng-disabled="createBook.$invalid">Save</button>
+  <button class="btn btn-lg btn-primary" ng-click="delete()">Delete</button>
+</form>
